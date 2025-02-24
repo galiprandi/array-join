@@ -1,5 +1,5 @@
 {
-  "name": "array-join",
+  "name": "@galiprandi/array-join",
   "version": "1.0.0",
   "description": "Utility functions for SQL-like array joins",
   "type": "module",
@@ -12,17 +12,15 @@
     "build": "echo '🏗️ Building package...' && tsc && echo '✅ Build complete!'",
     "test": "echo '🧪 Running tests...' && vitest && echo '✅ All tests passed!'",
     "prettier": "echo '🎨 Formatting code...' && prettier --write . && echo '✅ Formatting complete!'",
-    "prepare": "pnpm run build"
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "typescript": "~5.7.2",
-    "vite": "^6.1.0",
     "vitest": "^3.0.6"
   },
-  "packageManager": "pnpm@9.15.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tu-usuario/array-join.git"
+    "url": "https://github.com/galiprandi/array-join.git"
   },
   "keywords": [
     "array",
@@ -34,5 +32,6 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af"
 }

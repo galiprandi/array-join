@@ -1,0 +1,14 @@
+# Exclude test files
+src/**/*.test.ts
+tests/
+coverage/
+
+# Ignore build artifacts if not needed
+dist/*.map
+
+# Ignore config and dotfiles
+.git
+.github/
+node_modules/
+.vscode/
+*.log
