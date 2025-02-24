@@ -21,10 +21,11 @@ jobs:
           node-version: 18
           cache: "pnpm"
 
+      - name: 🛠 Enable Corepack
+        run: corepack enable
+
       - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9.1.0 # Usa la última versión estable de pnpm
+        run: npm install -g pnpm && pnpm setup
 
       - name: 📦 Install dependencies
         run: pnpm install
