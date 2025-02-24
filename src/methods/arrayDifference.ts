@@ -10,7 +10,7 @@ export function arrayDifference<T>(array: T[], valuesToRemove: T[]): T[] {
         throw new Error("Both arguments must be arrays");
     }
 
-    const valuesSet = new Set(valuesToRemove); // O(m)
-    return array.filter(item => !valuesSet.has(item)); // O(n)
+    const valuesSet = new Set(valuesToRemove);
+    return array.filter(item => !valuesSet.has(item));
 }
 
