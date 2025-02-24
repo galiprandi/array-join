@@ -9,12 +9,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "echo '🏗️ Building package...' && tsc && echo '✅ Build complete!'",
+    "build": "echo '🏗️ Building package...' && esbuild src/main.ts --bundle --minify --outfile=dist/main.js",
     "test": "echo '🧪 Running tests...' && vitest && echo '✅ All tests passed!'",
     "prettier": "echo '🎨 Formatting code...' && prettier --write . && echo '✅ Formatting complete!'",
     "prepare": "npm run build"
   },
   "devDependencies": {
+    "esbuild": "^0.25.0",
     "typescript": "~5.7.2",
     "vitest": "^3.0.6"
   },
