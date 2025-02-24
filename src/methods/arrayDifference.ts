@@ -5,6 +5,12 @@
  * @returns {T[]} A new array containing elements from `array1` that are not in `array2`.
  * @template T
  */
-export function arrayDifference<T>(array1: T[], array2: T[]): T[] {
-    return array1.filter(item => !array2.includes(item));
+export function arrayDifference<T>(array: T[], valuesToRemove: T[]): T[] {
+    if (!Array.isArray(array) || !Array.isArray(valuesToRemove)) {
+        throw new Error("Both arguments must be arrays");
+    }
+
+    const valuesSet = new Set(valuesToRemove); // O(m)
+    return array.filter(item => !valuesSet.has(item)); // O(n)
 }
+
