@@ -12,6 +12,7 @@ The library includes the following methods:
 - **`arrayDistinct(arr1, arr2)`**: Returns elements that are **unique** to each array (those not present in both).
 - **`orderBy(arr, keySelector, order)`**: Sorts an array based on a specified key, using the Schwartzian transform to improve performance.
 - **`arrayChunk(arr, size)`**: Splits an array into smaller chunks of the given size.
+- **`arrayChunkBy(arr, keySelector)`**: Groups consecutive elements into chunks based on a key derived from each element.
 
 Each method is designed to be **immutable** (does not modify the original array) and is optimized for superior performance.
 
