@@ -1,6 +1,6 @@
 {
   "name": "@galiprandi/array-join",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Utility functions for SQL-like array joins",
   "type": "module",
   "main": "dist/main.js",
