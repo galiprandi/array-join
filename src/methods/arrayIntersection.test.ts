@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { arrayDifference } from "./arrayDifference";
 
-describe.only("arrayDifference", () => {
+describe("arrayDifference", () => {
     it("should return elements in array1 not in array2", () => {
         expect(arrayDifference([1, 2, 3, 4], [2, 4])).toEqual([1, 3]);
     });
