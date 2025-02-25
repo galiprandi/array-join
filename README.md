@@ -151,6 +151,43 @@ console.log(result); // [["🍎", "🍌"], ["🍓", "🍍"], ["🍇"]]
 
 ---
 
+## 🔹 arrayChunkBy(arr, keySelector)
+
+`arrayChunkBy` groups consecutive elements of an array into chunks based on a key derived from each element using the provided `keySelector` function. A new chunk is started every time the key value changes.
+
+### How It Works
+- **Iteration:** The method iterates over the array once, comparing each element's key (as determined by `keySelector`) with the key of the first element in the current chunk.
+- **Grouping:** If the key matches the current chunk's key, the element is added to that chunk; otherwise, the current chunk is closed and a new chunk is started.
+- **Immutability:** The original array remains unmodified. The function returns a new array of chunks.
+- **Complexity:** The operation runs in **O(n)** time since each element is processed exactly once.
+
+### Example 1
+```ts
+const result = arrayChunkBy([1, 1, 2, 2, 3, 1], x => x);
+console.log(result);
+// Output: [[1, 1], [2, 2], [3], [1]]
+```
+
+### Example 2
+Grouping an array of strings by their first letter:
+```ts
+const fruits = ["apple", "ant", "banana", "berry", "cherry", "citrus"];
+const groupedFruits = arrayChunkBy(fruits, word => word[0]);
+console.log(groupedFruits);
+// Output: [["apple", "ant"], ["banana", "berry"], ["cherry", "citrus"]]
+```
+
+### Use Cases
+- **Data Grouping:** Grouping consecutive items in datasets such as logs, sensor data, or transactions.
+- **Report Generation:** Segmenting sorted data into meaningful groups for summaries.
+- **UI Rendering:** Organizing list items into distinct, grouped sections in the interface.
+
+### Error Handling
+- If the input is not an array, the method throws an error.
+- If `keySelector` is not a function, the method throws an error.
+
+---
+
 ## 🚀 Why Use array-join?
 
 - **Optimized Performance:** All methods are optimized for the best performance using advanced techniques and efficient data structures.
