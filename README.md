@@ -2,8 +2,6 @@
 
 🚀 **array-join** is a powerful and lightweight utility library that enables SQL-like operations on JavaScript arrays. This library offers functions for performing common set operations such as differences, intersections, unions, distinct, ordering, and chunking. All methods are **optimized** for the best performance, using efficient data structures (like `Set`) and advanced techniques (for example, the Schwartzian transform in `orderBy`) without modifying the original arrays (immutable operations).
 
----
-
 ## 📖 Overview
 
 The library includes the following methods:
@@ -17,83 +15,82 @@ The library includes the following methods:
 
 Each method is designed to be **immutable** (does not modify the original array) and is optimized for superior performance.
 
----
-
-## 🔹 arrayDifference(arr1, arr2)
+## arrayDifference(arr1, arr2)
 
 Returns the elements in the first array that **are not present** in the second. It uses a `Set` to optimize element lookup.
 
 ### Example
+
 ```ts
 const result = arrayDifference(["🍎", "🍌", "🍓", "🍍"], ["🍌", "🍍"]);
 console.log(result); // ["🍎", "🍓"]
 ```
 
 ### Use Cases
+
 - Detecting removed items from an inventory.
 - Filtering out existing records from a dataset.
 - Comparing lists to identify differences.
 
----
-
-## 🔹 arrayIntersection(arr1, arr2)
+## arrayIntersection(arr1, arr2)
 
 Returns the elements **common** to both arrays, optimized using a `Set`.
 
 ### Example
+
 ```ts
 const result = arrayIntersection(["🍎", "🍌", "🍓", "🍍"], ["🍌", "🍍", "🍇"]);
 console.log(result); // ["🍌", "🍍"]
 ```
 
 ### Use Cases
+
 - Finding shared items between two lists.
 - Detecting duplicate records across multiple sources.
 - Comparing datasets for common entries.
 
----
-
-## 🔹 arrayUnion(arr1, arr2)
+## arrayUnion(arr1, arr2)
 
 Merges two arrays and removes duplicates, ensuring each element appears only once. This operation is immutable and optimized using efficient data structures.
 
 ### Example
+
 ```ts
 const result = arrayUnion(["🍎", "🍌", "🍓"], ["🍓", "🍍", "🍇"]);
 console.log(result); // ["🍎", "🍌", "🍓", "🍍", "🍇"]
 ```
 
 ### Use Cases
+
 - Combining product lists from different suppliers.
 - Merging inventories without duplicate records.
 - Aggregating unique items from multiple arrays.
 
----
-
-## 🔹 arrayDistinct(arr1, arr2)
+## arrayDistinct(arr1, arr2)
 
 Returns the elements that are **unique** to each array, meaning they do not exist in both.
 
 ### Example
+
 ```ts
 const result = arrayDistinct(["🍎", "🍌", "🍓"], ["🍌", "🍓", "🍍"]);
 console.log(result); // ["🍎", "🍍"]
 ```
 
 ### Use Cases
+
 - Identifying unique elements in comparative sets.
 - Highlighting differences between two lists.
 - Detecting exclusive records in datasets.
 
----
-
-## 🔹 orderBy(arr, keySelector, order = "asc")
+## orderBy(arr, keySelector, order = "asc")
 
 Sorts an array based on a key extracted by the `keySelector` function. This method uses the Schwartzian transform (decorate-sort-undecorate) to compute each element’s key only once, which is beneficial when key extraction is costly.
 
 > **Warning:** This method uses the Schwartzian pattern, which might not be optimal in cases where the `keySelector` function is simple and inexpensive. In such cases, it is recommended to use a direct sort without decorating and undecorating to avoid the additional overhead.
 
 ### Example: Ascending Order (Default)
+
 ```ts
 const data = [
   { name: "🍍", price: 10 },
@@ -111,6 +108,7 @@ console.log(resultAsc);
 ```
 
 ### Example: Descending Order
+
 ```ts
 const data = [
   { name: "🍍", price: 10 },
@@ -128,40 +126,34 @@ console.log(resultDesc);
 ```
 
 ### Use Cases
+
 - Sorting records for UI display.
 - Organizing data for reports.
 - Implementing ordered views in applications.
 
----
-
-## 🔹 arrayChunk(arr, size)
+## arrayChunk(arr, size)
 
 Splits an array into smaller chunks of the specified size, making it easier to process large datasets in manageable portions.
 
 ### Example
+
 ```ts
 const result = arrayChunk(["🍎", "🍌", "🍓", "🍍", "🍇"], 2);
 console.log(result); // [["🍎", "🍌"], ["🍓", "🍍"], ["🍇"]]
 ```
 
 ### Use Cases
+
 - Implementing pagination in UI.
 - Processing data in small batches.
 - Organizing large collections into manageable groups.
 
----
+## arrayChunkBy(arr, keySelector)
 
-## 🔹 arrayChunkBy(arr, keySelector)
-
-`arrayChunkBy` groups consecutive elements of an array into chunks based on a key derived from each element using the provided `keySelector` function. A new chunk is started every time the key value changes.
-
-### How It Works
-- **Iteration:** The method iterates over the array once, comparing each element's key (as determined by `keySelector`) with the key of the first element in the current chunk.
-- **Grouping:** If the key matches the current chunk's key, the element is added to that chunk; otherwise, the current chunk is closed and a new chunk is started.
-- **Immutability:** The original array remains unmodified. The function returns a new array of chunks.
-- **Complexity:** The operation runs in **O(n)** time since each element is processed exactly once.
+Groups consecutive elements of an array into chunks based on a key derived from each element using the provided `keySelector` function. A new chunk is started every time the key value changes. This method is immutable and operates in **O(n)** time.
 
 ### Example 1
+
 ```ts
 const result = arrayChunkBy([1, 1, 2, 2, 3, 1], x => x);
 console.log(result);
@@ -169,7 +161,9 @@ console.log(result);
 ```
 
 ### Example 2
+
 Grouping an array of strings by their first letter:
+
 ```ts
 const fruits = ["apple", "ant", "banana", "berry", "cherry", "citrus"];
 const groupedFruits = arrayChunkBy(fruits, word => word[0]);
@@ -178,15 +172,10 @@ console.log(groupedFruits);
 ```
 
 ### Use Cases
-- **Data Grouping:** Grouping consecutive items in datasets such as logs, sensor data, or transactions.
-- **Report Generation:** Segmenting sorted data into meaningful groups for summaries.
-- **UI Rendering:** Organizing list items into distinct, grouped sections in the interface.
 
-### Error Handling
-- If the input is not an array, the method throws an error.
-- If `keySelector` is not a function, the method throws an error.
-
----
+- **Data Grouping:** Organize consecutive items in logs, sensor readings, or transactions.
+- **Report Generation:** Segment sorted data into meaningful groups for summaries.
+- **UI Rendering:** Group list items into distinct sections for improved display.
 
 ## 🚀 Why Use array-join?
 
@@ -196,15 +185,13 @@ console.log(groupedFruits);
 - **TypeScript Support:** Strong typing for safer code.
 - **Simple API:** Easy to integrate and use in any project.
 
----
-
 ## 🎯 Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
----
-
 ## 📝 License
 
 This project is licensed under the MIT License.
+
+```
 ```
