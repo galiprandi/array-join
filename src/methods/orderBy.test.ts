@@ -5,36 +5,56 @@ describe("orderBy", () => {
         expect(orderBy([], x => x)).toEqual([]);
     });
 
-    it("should sort an array of numbers in ascending order", () => {
+    it("should sort an array of numbers in ascending order by default", () => {
         const input = [5, 2, 9, 1, 5, 6];
-        const output = orderBy(input, x => x);
-        expect(output).toEqual([1, 2, 5, 5, 6, 9]);
+        const result = orderBy(input, x => x);
+        expect(result).toEqual([1, 2, 5, 5, 6, 9]);
     });
 
-    it("should sort an array of strings alphabetically", () => {
+    it("should sort an array of numbers in ascending order when 'asc' is provided", () => {
+        const input = [5, 2, 9, 1, 5, 6];
+        const result = orderBy(input, x => x, "asc");
+        expect(result).toEqual([1, 2, 5, 5, 6, 9]);
+    });
+
+    it("should sort an array of numbers in descending order when 'desc' is provided", () => {
+        const input = [5, 2, 9, 1, 5, 6];
+        const result = orderBy(input, x => x, "desc");
+        expect(result).toEqual([9, 6, 5, 5, 2, 1]);
+    });
+
+    it("should sort an array of strings alphabetically in ascending order", () => {
         const input = ["banana", "apple", "cherry"];
-        const output = orderBy(input, x => x);
-        expect(output).toEqual(["apple", "banana", "cherry"]);
+        const result = orderBy(input, x => x);
+        expect(result).toEqual(["apple", "banana", "cherry"]);
     });
 
-    it("should sort an array of objects based on a key", () => {
+    it("should sort an array of objects by a key in ascending order", () => {
         const input = [
             { id: 3, name: "Charlie" },
             { id: 1, name: "Alice" },
             { id: 2, name: "Bob" }
         ];
-        const output = orderBy(input, x => x.id);
-        expect(output).toEqual([
+        const result = orderBy(input, x => x.id, "asc");
+        expect(result).toEqual([
             { id: 1, name: "Alice" },
             { id: 2, name: "Bob" },
             { id: 3, name: "Charlie" }
         ]);
     });
 
-    it("should correctly handle duplicate elements", () => {
-        const input = [3, 1, 2, 1, 3];
-        const output = orderBy(input, x => x);
-        expect(output).toEqual([1, 1, 2, 3, 3]);
+    it("should sort an array of objects by a key in descending order", () => {
+        const input = [
+            { id: 3, name: "Charlie" },
+            { id: 1, name: "Alice" },
+            { id: 2, name: "Bob" }
+        ];
+        const result = orderBy(input, x => x.id, "desc");
+        expect(result).toEqual([
+            { id: 3, name: "Charlie" },
+            { id: 2, name: "Bob" },
+            { id: 1, name: "Alice" }
+        ]);
     });
 
     it("should maintain the original order for equal keys (stable sort)", () => {
@@ -43,16 +63,14 @@ describe("orderBy", () => {
             { name: "Bob", age: 30 },
             { name: "Charlie", age: 30 }
         ];
-        // When sorting by age, the original order should be maintained
-        const output = orderBy(input, x => x.age);
-        expect(output).toEqual(input);
+        const result = orderBy(input, x => x.age);
+        expect(result).toEqual(input);
     });
 
     it("should handle undefined keys correctly", () => {
         const input = [1, 2, 3];
-        // All keys will be undefined, so the original order is maintained
-        const output = orderBy(input, () => undefined);
-        expect(output).toEqual([1, 2, 3]);
+        const result = orderBy(input, () => undefined);
+        expect(result).toEqual([1, 2, 3]);
     });
 
     it("should throw an error if input is not an array", () => {
