@@ -5,6 +5,7 @@ import { arrayDistinct } from "./methods/arrayDistinct";
 import { orderBy } from "./methods/orderBy";
 import { arrayChunk } from "./methods/arrayChunk";
 import { arrayChunkBy } from './methods/arrayChunkBy';
+import { arrayTruthy } from './methods/arrayTruthy';
 
 export {
   arrayDifference,
@@ -13,5 +14,7 @@ export {
   arrayDistinct,
   orderBy,
   arrayChunk,
-  arrayChunkBy
+  arrayChunkBy,
+  arrayTruthy
+
 };

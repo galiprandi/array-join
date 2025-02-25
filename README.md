@@ -13,6 +13,7 @@ The library includes the following methods:
 - **`orderBy(arr, keySelector, order)`**: Sorts an array based on a specified key, using the Schwartzian transform to improve performance.
 - **`arrayChunk(arr, size)`**: Splits an array into smaller chunks of the given size.
 - **`arrayChunkBy(arr, keySelector)`**: Groups consecutive elements into chunks based on a key derived from each element.
+- **`arrayTruthy(arr)`**: Removes all falsy values from an array, returning only truthy values.
 
 Each method is designed to be **immutable** (does not modify the original array) and is optimized for superior performance.
 
@@ -177,6 +178,30 @@ console.log(groupedFruits);
 - **Data Grouping:** Organize consecutive items in logs, sensor readings, or transactions.
 - **Report Generation:** Segment sorted data into meaningful groups for summaries.
 - **UI Rendering:** Group list items into distinct sections for improved display.
+
+## 🔹 arrayTruthy(arr)
+
+Removes all falsy values (such as `null`, `undefined`, `false`, `0`, `''`, and `NaN`) from an array, returning a new array that contains only truthy values. This method is useful for cleaning up data before further processing or rendering in the UI.
+
+### Example 1
+```ts
+const result = arrayTruthy([0, 1, false, 2, "", 3, null, undefined, NaN]);
+console.log(result);
+// Output: [1, 2, 3]
+```
+
+### Example 2
+```ts
+const data = [false, 0, "", null, "Hello", 42, undefined, "World"];
+const cleanData = arrayTruthy(data);
+console.log(cleanData);
+// Output: ["Hello", 42, "World"]
+```
+
+### Use Cases
+- **Data Cleaning:** Remove unwanted falsy values from arrays before processing or transmitting data.
+- **UI Rendering:** Ensure that only meaningful values are displayed in lists or UI components.
+- **Data Transformation:** Prepare clean datasets for reporting, analysis, or API consumption.
 
 ## 🚀 Why Use array-join?
 
