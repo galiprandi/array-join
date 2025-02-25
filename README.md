@@ -1,24 +1,27 @@
 # array-join
 
-🚀 **array-join** is a powerful and lightweight utility library that enables SQL-like operations on JavaScript arrays. It provides functions for performing common set operations such as differences, intersections, unions, and ordering. Designed for developers who need efficient and immutable data manipulation, `array-join` makes array operations intuitive and performant.
-
-## 📖 Overview
-
-This library offers the following methods:
-
-- `arrayDifference(arr1, arr2)`: Returns elements in the first array that are not present in the second.
-- `arrayIntersection(arr1, arr2)`: Returns elements common to both arrays.
-- `arrayUnion(arr1, arr2)`: Merges two arrays, removing duplicates.
-- `arrayDistinct(arr1, arr2)`: Finds elements that are unique to each array.
-- `orderBy(arr, keySelector, order)`: Sorts an array based on a specified key.
-- `arrayChunk(arr, size)`: Splits an array into smaller chunks.
-
-Each method is **immutable**, meaning that it does not modify the original arrays, ensuring safer and more predictable data transformations.
+🚀 **array-join** is a powerful and lightweight utility library that enables SQL-like operations on JavaScript arrays. This library offers functions for performing common set operations such as differences, intersections, unions, distinct, ordering, and chunking. All methods are **optimized** for the best performance, using efficient data structures (like `Set`) and advanced techniques (for example, the Schwartzian transform in `orderBy`) without modifying the original arrays (immutable operations).
 
 ---
 
-## 🔹 `arrayDifference(arr1, arr2)`
-Finds elements in the first array that **do not exist** in the second array. This is useful for identifying missing items in datasets, detecting removed elements, or performing comparisons between two lists of records.
+## 📖 Overview
+
+The library includes the following methods:
+
+- **`arrayDifference(arr1, arr2)`**: Returns elements in the first array that **do not exist** in the second.
+- **`arrayIntersection(arr1, arr2)`**: Returns elements common to both arrays.
+- **`arrayUnion(arr1, arr2)`**: Merges two arrays and removes duplicates, returning only unique elements.
+- **`arrayDistinct(arr1, arr2)`**: Returns elements that are **unique** to each array (those not present in both).
+- **`orderBy(arr, keySelector, order)`**: Sorts an array based on a specified key, using the Schwartzian transform to improve performance.
+- **`arrayChunk(arr, size)`**: Splits an array into smaller chunks of the given size.
+
+Each method is designed to be **immutable** (does not modify the original array) and is optimized for superior performance.
+
+---
+
+## 🔹 arrayDifference(arr1, arr2)
+
+Returns the elements in the first array that **are not present** in the second. It uses a `Set` to optimize element lookup.
 
 ### Example
 ```ts
@@ -27,14 +30,15 @@ console.log(result); // ["🍎", "🍓"]
 ```
 
 ### Use Cases
-- Identifying removed items from an inventory.
-- Detecting missing ingredients in a recipe.
+- Detecting removed items from an inventory.
 - Filtering out existing records from a dataset.
+- Comparing lists to identify differences.
 
 ---
 
-## 🔹 `arrayIntersection(arr1, arr2)`
-Finds elements that are **common** to both arrays. This is ideal for finding shared records, identifying common elements between different datasets, or detecting duplicate entries across multiple sources.
+## 🔹 arrayIntersection(arr1, arr2)
+
+Returns the elements **common** to both arrays, optimized using a `Set`.
 
 ### Example
 ```ts
@@ -43,14 +47,15 @@ console.log(result); // ["🍌", "🍍"]
 ```
 
 ### Use Cases
-- Finding common fruits in two baskets.
-- Identifying overlapping ingredients in recipes.
-- Comparing two arrays to find mutual entries.
+- Finding shared items between two lists.
+- Detecting duplicate records across multiple sources.
+- Comparing datasets for common entries.
 
 ---
 
-## 🔹 `arrayUnion(arr1, arr2)`
-Combines two arrays and **removes duplicates**, ensuring that each element appears only once in the resulting array. This is useful for merging lists, aggregating data, and unifying records.
+## 🔹 arrayUnion(arr1, arr2)
+
+Merges two arrays and removes duplicates, ensuring each element appears only once. This operation is immutable and optimized using efficient data structures.
 
 ### Example
 ```ts
@@ -59,14 +64,15 @@ console.log(result); // ["🍎", "🍌", "🍓", "🍍", "🍇"]
 ```
 
 ### Use Cases
-- Merging fruit lists from different suppliers.
-- Aggregating shopping lists without duplicate items.
-- Creating a combined list of unique products.
+- Combining product lists from different suppliers.
+- Merging inventories without duplicate records.
+- Aggregating unique items from multiple arrays.
 
 ---
 
-## 🔹 `arrayDistinct(arr1, arr2)`
-Finds elements that are **unique** to each array, meaning they do not exist in both. This helps identify exclusive records, compare datasets, and filter out shared elements.
+## 🔹 arrayDistinct(arr1, arr2)
+
+Returns the elements that are **unique** to each array, meaning they do not exist in both.
 
 ### Example
 ```ts
@@ -75,31 +81,62 @@ console.log(result); // ["🍎", "🍍"]
 ```
 
 ### Use Cases
-- Identifying fruits unique to each basket.
-- Finding differences between two recipe ingredient lists.
-- Highlighting exclusive records in two arrays.
+- Identifying unique elements in comparative sets.
+- Highlighting differences between two lists.
+- Detecting exclusive records in datasets.
 
 ---
 
-## 🔹 `orderBy(arr, keySelector, order = 'asc')`
-Sorts an array by a specified key in ascending or descending order. This method is useful for arranging structured data, ordering records, and implementing sorted views for lists.
+## 🔹 orderBy(arr, keySelector, order = "asc")
 
-### Example
+Sorts an array based on a key extracted by the `keySelector` function. This method uses the Schwartzian transform (decorate-sort-undecorate) to compute each element’s key only once, which is beneficial when key extraction is costly.
+
+> **Warning:** This method uses the Schwartzian pattern, which might not be optimal in cases where the `keySelector` function is simple and inexpensive. In such cases, it is recommended to use a direct sort without decorating and undecorating to avoid the additional overhead.
+
+### Example: Ascending Order (Default)
 ```ts
-const data = [{ name: "🍍" }, { name: "🍎" }, { name: "🍌" }];
-const result = orderBy(data, item => item.name, "asc");
-console.log(result); // [{ name: "🍎" }, { name: "🍌" }, { name: "🍍" }]
+const data = [
+  { name: "🍍", price: 10 },
+  { name: "🍎", price: 5 },
+  { name: "🍌", price: 7 }
+];
+const resultAsc = orderBy(data, item => item.price);
+console.log(resultAsc);
+// Output:
+// [
+//   { name: "🍎", price: 5 },
+//   { name: "🍌", price: 7 },
+//   { name: "🍍", price: 10 }
+// ]
+```
+
+### Example: Descending Order
+```ts
+const data = [
+  { name: "🍍", price: 10 },
+  { name: "🍎", price: 5 },
+  { name: "🍌", price: 7 }
+];
+const resultDesc = orderBy(data, item => item.price, "desc");
+console.log(resultDesc);
+// Output:
+// [
+//   { name: "🍍", price: 10 },
+//   { name: "🍌", price: 7 },
+//   { name: "🍎", price: 5 }
+// ]
 ```
 
 ### Use Cases
-- Sorting fruit names alphabetically.
-- Arranging grocery lists by category.
-- Ordering product lists by name or price.
+- Sorting records for UI display.
+- Organizing data for reports.
+- Implementing ordered views in applications.
 
 ---
 
-## 🔹 `arrayChunk(arr, size)`
-Divides an array into smaller chunks of the given size, making it easier to process large datasets in smaller, manageable portions.
+## 🔹 arrayChunk(arr, size)
+
+Splits an array into smaller chunks of the specified size, making it easier to process large datasets in manageable portions.
 
 ### Example
 ```ts
@@ -108,24 +145,29 @@ console.log(result); // [["🍎", "🍌"], ["🍓", "🍍"], ["🍇"]]
 ```
 
 ### Use Cases
-- Implementing pagination in a UI.
-- Splitting large grocery lists into smaller categories.
-- Organizing bulk items into manageable groups.
+- Implementing pagination in UI.
+- Processing data in small batches.
+- Organizing large collections into manageable groups.
 
 ---
 
-## 🚀 Why Use `array-join`?
-✅ **Immutable operations** – no side effects.  
-✅ **Lightweight & performant** – optimized for speed.  
-✅ **TypeScript support** – strong typing for safer code.  
-✅ **Simple API** – easy to use and integrate.  
+## 🚀 Why Use array-join?
+
+- **Optimized Performance:** All methods are optimized for the best performance using advanced techniques and efficient data structures.
+- **Immutable Operations:** Functions do not modify the original arrays, ensuring safer and more predictable data transformations.
+- **Lightweight & Efficient:** The library is small and designed to be highly performant.
+- **TypeScript Support:** Strong typing for safer code.
+- **Simple API:** Easy to integrate and use in any project.
 
 ---
 
 ## 🎯 Contributing
-We welcome contributions! Feel free to open an issue or submit a pull request.
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
 
 ---
 
 ## 📝 License
+
 This project is licensed under the MIT License.
+```
