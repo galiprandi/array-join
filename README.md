@@ -184,6 +184,7 @@ console.log(groupedFruits);
 Removes all falsy values (such as `null`, `undefined`, `false`, `0`, `''`, and `NaN`) from an array, returning a new array that contains only truthy values. This method is useful for cleaning up data before further processing or rendering in the UI.
 
 ### Example 1
+
 ```ts
 const result = arrayTruthy([0, 1, false, 2, "", 3, null, undefined, NaN]);
 console.log(result);
@@ -191,6 +192,7 @@ console.log(result);
 ```
 
 ### Example 2
+
 ```ts
 const data = [false, 0, "", null, "Hello", 42, undefined, "World"];
 const cleanData = arrayTruthy(data);
@@ -199,6 +201,7 @@ console.log(cleanData);
 ```
 
 ### Use Cases
+
 - **Data Cleaning:** Remove unwanted falsy values from arrays before processing or transmitting data.
 - **UI Rendering:** Ensure that only meaningful values are displayed in lists or UI components.
 - **Data Transformation:** Prepare clean datasets for reporting, analysis, or API consumption.
