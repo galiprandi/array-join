@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "publish": "echo '📦 Publishing package...' && npm publish --access public",
+    "publish": "echo '📦 Publishing package...' && npm publish",
     "build": "echo '🏗️ Building package...' && tsc",
     "prebuild": "npm run format:md && npm run prettier && npm test",
     "test": "echo '🧪 Running tests...' && vitest --run && echo '✅ All tests passed!'",
