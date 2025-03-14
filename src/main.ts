@@ -16,5 +16,16 @@ export {
   arrayChunk,
   arrayChunkBy,
   arrayTruthy
-
 };
+
+export default {
+  arrayDifference,
+  arrayIntersection,
+  arrayUnion,
+  arrayDistinct,
+  orderBy,
+  arrayChunk,
+  arrayChunkBy,
+  arrayTruthy
+};
+

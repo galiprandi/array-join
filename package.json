@@ -1,6 +1,6 @@
 {
   "name": "@galiprandi/array-join",
-  "version": "2.1.2",
+  "version": "2.2.2",
   "description": "Utility functions for SQL-like array joins",
   "type": "module",
   "main": "dist/main.js",
@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "echo '🏗️ Building package...' && esbuild src/main.ts --bundle --minify --outfile=dist/main.js",
+    "build": "echo '🏗️ Building package...' && tsc",
     "test": "echo '🧪 Running tests...' && vitest && echo '✅ All tests passed!'",
     "prettier": "echo '🎨 Formatting code...' && prettier --write . && echo '✅ Formatting complete!'",
     "format:md": "npx dprint fmt *.md",

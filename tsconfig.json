@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "useDefineForClassFields": true,
     "module": "ESNext",
+    "moduleResolution": "bundler",
+    "declaration": true,
+    "outDir": "dist",
+    "useDefineForClassFields": true,
     "lib": [
       "ES2020",
       "DOM",
@@ -10,14 +13,11 @@
     ],
     "skipLibCheck": true,
     /* Output settings */
-    "outDir": "dist",
-    "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "removeComments": true,
     "noEmit": false,
     /* Bundler mode */
-    "moduleResolution": "bundler",
     "isolatedModules": true,
     "moduleDetection": "force",
     /* Linting */
