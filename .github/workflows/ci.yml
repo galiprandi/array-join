@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: ✅ Run Tests & Linting
+    name: ✅ Run Tests, Linting & Formatting
     runs-on: ubuntu-latest
 
     steps:
@@ -42,11 +42,8 @@ jobs:
       - name: 📦 Install dependencies
         run: pnpm install
 
-      - name: 📦 Install Prettier globally
-        run: pnpm add -g prettier
-
-      - name: 🎨 Run Prettier (Code Formatter)
-        run: pnpm prettier --write .
+      - name: 🎨 Run Code Formatter
+        run: pnpm run code
 
       - name: 🧪 Run Tests
         run: pnpm test

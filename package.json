@@ -11,9 +11,9 @@
   "scripts": {
     "publish": "echo '📦 Publishing package...' && npm publish",
     "build": "echo '🏗️ Building package...' && tsc",
-    "prebuild": "npm run format:md && npm run prettier && npm test",
-    "test": "echo '🧪 Running tests...' && vitest --run && echo '✅ All tests passed!'",
-    "prettier": "echo '🎨 Formatting code...' && npx standard --fix . && echo '✅ Formatting complete!'",
+    "prebuild": "npm run format:md && npm run code && npm test",
+    "test": "echo '🧪 Running Tests...' && vitest --run && echo '✅ All tests passed!'",
+    "code": "echo '🎨 Running Code Formatter...' && npx standard --fix . && echo '✅ Formatting complete!'",
     "format:md": "npx dprint fmt *.md",
     "prepare": "npm run build",
     "release": "npm run format:md && node release.js"
