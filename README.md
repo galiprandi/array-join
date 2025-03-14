@@ -97,9 +97,9 @@ Sorts an array based on a key extracted by the `keySelector` function. This meth
 const data = [
   { name: "🍍", price: 10 },
   { name: "🍎", price: 5 },
-  { name: "🍌", price: 7 }
+  { name: "🍌", price: 7 },
 ];
-const resultAsc = orderBy(data, item => item.price);
+const resultAsc = orderBy(data, (item) => item.price);
 console.log(resultAsc);
 // Output:
 // [
@@ -115,9 +115,9 @@ console.log(resultAsc);
 const data = [
   { name: "🍍", price: 10 },
   { name: "🍎", price: 5 },
-  { name: "🍌", price: 7 }
+  { name: "🍌", price: 7 },
 ];
-const resultDesc = orderBy(data, item => item.price, "desc");
+const resultDesc = orderBy(data, (item) => item.price, "desc");
 console.log(resultDesc);
 // Output:
 // [
@@ -157,7 +157,7 @@ Groups consecutive elements of an array into chunks based on a key derived from 
 ### Example 1
 
 ```ts
-const result = arrayChunkBy([1, 1, 2, 2, 3, 1], x => x);
+const result = arrayChunkBy([1, 1, 2, 2, 3, 1], (x) => x);
 console.log(result);
 // Output: [[1, 1], [2, 2], [3], [1]]
 ```
@@ -168,7 +168,7 @@ Grouping an array of strings by their first letter:
 
 ```ts
 const fruits = ["apple", "ant", "banana", "berry", "cherry", "citrus"];
-const groupedFruits = arrayChunkBy(fruits, word => word[0]);
+const groupedFruits = arrayChunkBy(fruits, (word) => word[0]);
 console.log(groupedFruits);
 // Output: [["apple", "ant"], ["banana", "berry"], ["cherry", "citrus"]]
 ```

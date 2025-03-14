@@ -12,8 +12,7 @@
  * console.log(result); // [1, 2, 3]
  */
 export function arrayTruthy<T>(array: T[]): T[] {
-    if (!Array.isArray(array))
-        throw new Error("Input must be an array");
+  if (!Array.isArray(array)) throw new Error("Input must be an array");
 
-    return array.filter(item => Boolean(item));
+  return array.filter((item) => Boolean(item));
 }

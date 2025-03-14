@@ -6,9 +6,9 @@
  * @template T
  */
 export function arrayUnion<T>(array1: T[], array2: T[]): T[] {
-    if (!Array.isArray(array1) || !Array.isArray(array2)) {
-        throw new Error("Both arguments must be arrays");
-    }
+  if (!Array.isArray(array1) || !Array.isArray(array2)) {
+    throw new Error("Both arguments must be arrays");
+  }
 
-    return Array.from(new Set([...array1, ...array2]));
+  return Array.from(new Set([...array1, ...array2]));
 }

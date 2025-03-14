@@ -1,11 +1,11 @@
-import { arrayDifference } from "./methods/arrayDifference";
-import { arrayIntersection } from "./methods/arrayIntersection";
-import { arrayUnion } from "./methods/arrayUnion";
-import { arrayDistinct } from "./methods/arrayDistinct";
-import { orderBy } from "./methods/orderBy";
-import { arrayChunk } from "./methods/arrayChunk";
-import { arrayChunkBy } from './methods/arrayChunkBy';
-import { arrayTruthy } from './methods/arrayTruthy';
+import { arrayDifference } from "./methods/arrayDifference.js";
+import { arrayIntersection } from "./methods/arrayIntersection.js";
+import { arrayUnion } from "./methods/arrayUnion.js";
+import { arrayDistinct } from "./methods/arrayDistinct.js";
+import { orderBy } from "./methods/orderBy.js";
+import { arrayChunk } from "./methods/arrayChunk.js";
+import { arrayChunkBy } from "./methods/arrayChunkBy.js";
+import { arrayTruthy } from "./methods/arrayTruthy.js";
 
 export {
   arrayDifference,
@@ -15,7 +15,7 @@ export {
   orderBy,
   arrayChunk,
   arrayChunkBy,
-  arrayTruthy
+  arrayTruthy,
 };
 
 export default {
@@ -26,6 +26,5 @@ export default {
   orderBy,
   arrayChunk,
   arrayChunkBy,
-  arrayTruthy
+  arrayTruthy,
 };
-

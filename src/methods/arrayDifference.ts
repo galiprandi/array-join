@@ -6,11 +6,10 @@
  * @template T
  */
 export function arrayDifference<T>(array: T[], valuesToRemove: T[]): T[] {
-    if (!Array.isArray(array) || !Array.isArray(valuesToRemove)) {
-        throw new Error("Both arguments must be arrays");
-    }
+  if (!Array.isArray(array) || !Array.isArray(valuesToRemove)) {
+    throw new Error("Both arguments must be arrays");
+  }
 
-    const valuesSet = new Set(valuesToRemove);
-    return array.filter(item => !valuesSet.has(item));
+  const valuesSet = new Set(valuesToRemove);
+  return array.filter((item) => !valuesSet.has(item));
 }
-

@@ -6,10 +6,10 @@
  * @template T
  */
 export function arrayIntersection<T>(array1: T[], array2: T[]): T[] {
-    if (!Array.isArray(array1) || !Array.isArray(array2)) {
-        throw new Error("Both arguments must be arrays");
-    }
+  if (!Array.isArray(array1) || !Array.isArray(array2)) {
+    throw new Error("Both arguments must be arrays");
+  }
 
-    const set2 = new Set(array2);
-    return Array.from(new Set(array1.filter(item => set2.has(item))));
+  const set2 = new Set(array2);
+  return Array.from(new Set(array1.filter((item) => set2.has(item))));
 }
