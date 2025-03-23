@@ -1,7 +1,7 @@
 {
   "name": "@galiprandi/array-join",
   "version": "2.2.4",
-  "description": "Utility functions for SQL-like array joins",
+  "description": "🚨 DEPRECATED: Use @galiprandi/array-tools instead.",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
