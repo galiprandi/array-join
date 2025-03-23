@@ -7,6 +7,9 @@ import { arrayChunk } from "./methods/arrayChunk.js";
 import { arrayChunkBy } from "./methods/arrayChunkBy.js";
 import { arrayTruthy } from "./methods/arrayTruthy.js";
 
+// eslint-disable-next-line no-console
+console.warn("🚨 WARNING: @galiprandi/array-join is deprecated. Please use @galiprandi/array-tools instead.");
+
 export {
   arrayDifference,
   arrayIntersection,
