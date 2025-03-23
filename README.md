@@ -1,3 +1,8 @@
+## 🚨 DEPRECATED: Use [`@galiprandi/array-tools`](https://www.npmjs.com/package/@galiprandi/array-tools) instead 🚨
+
+This package is no longer maintained and will not receive updates.  
+Please switch to [`@galiprandi/array-tools`](https://www.npmjs.com/package/@galiprandi/array-tools) for improved functionality and support.
+
 # array-join
 
 🚀 **array-join** is a powerful and lightweight utility library that enables SQL-like operations on JavaScript arrays. This library offers functions for performing common set operations such as differences, intersections, unions, distinct, ordering, and chunking. All methods are **optimized** for the best performance, using efficient data structures (like `Set`) and advanced techniques (for example, the Schwartzian transform in `orderBy`) without modifying the original arrays (immutable operations).
